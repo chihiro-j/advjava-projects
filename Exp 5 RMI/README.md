@@ -82,6 +82,4 @@ The server terminal should show that the RMI server started and the calculator s
 
 This is an educational example with addition and subtraction only. It does not implement authentication or production-grade security.
 
-## Author
 
-Kovid Gupta
