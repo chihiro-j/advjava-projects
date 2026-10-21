@@ -1,91 +1,96 @@
-# Java Calculator Using MVC Architecture
+# Student Registration Form (Java Swing)
 
-A simple desktop calculator developed using Java Swing and the Model-View-Controller (MVC) design pattern. It performs basic arithmetic operations through a graphical user interface.
+A simple desktop-based Student Registration Form built using Java Swing. This project demonstrates GUI components, event handling, input validation, radio buttons, checkboxes, and dialog boxes.
 
 ## Features
 
-- Addition, subtraction, multiplication, and division.
-- Support for decimal numbers.
-- Clear button to reset the display.
-- Exit button to close the application.
-- Error handling for division by zero.
-- Graphical user interface using Java Swing.
-- MVC architecture for organized and maintainable code.
+- Enter student name, age, roll number, and branch.
+- Select a gender using radio buttons.
+- Accept the Terms and Conditions using a checkbox.
+- Validate required fields and age input.
+- Display a registration confirmation dialog after successful validation.
+- Reset the form fields using the Reset button.
 
 ## Technologies Used
 
 - Java
 - Java Swing
-- AWT Event Handling
-- Model-View-Controller (MVC) Architecture
+- JDK 8 or later (compilation checked with JDK 21)
 
 ## Project Structure
 
 ```text
-Calculator-Java/
-├── Main.java
-├── Model.java
-├── View.java
-├── Controller.java
+Form-Java/
+├── StudentRegistration.java
 └── README.md
 ```
 
-## MVC Architecture
-
-- **Model.java:** Performs arithmetic calculations.
-- **View\.java:** Creates the calculator interface, display, and buttons.
-- **Controller.java:** Handles button clicks and connects the Model and View.
-- **Main.java:** Starts the application and initializes the MVC components.
-
 ## Requirements
 
-1. Java Development Kit (JDK 8 or later).
-2. Visual Studio Code.
-3. Extension Pack for Java installed in VS Code.
+1. Install a Java Development Kit (JDK).
+2. Install Visual Studio Code.
+3. Install the **Extension Pack for Java** in VS Code.
 
-Verify that Java is installed by running these commands in the terminal:
+Verify Java is installed by opening a terminal and running:
 
 ```bash
 java -version
 javac -version
 ```
 
+Both commands should display a version number.
+
+## Run the Project in VS Code
+
+1. Download or clone this repository.
+2. Open VS Code.
+3. Select **File → Open Folder** and choose the project folder.
+4. Open `StudentRegistration.java`.
+5. Run the program using the **Run Java** option above `main()`, or use the terminal commands below.
+
+### Run from the terminal
+
+Open the VS Code terminal using **Terminal → New Terminal**. Make sure the terminal is in the folder containing `StudentRegistration.java`, then run:
+
+```bash
+javac StudentRegistration.java
+java StudentRegistration
+```
+
+The first command compiles the source file. The second launches the form.
+
+Run the project on a desktop session that supports graphical applications. A headless environment cannot display the Swing window.
+
 ## How to Use
 
-1. Click the number buttons to enter a number.
-2. Select an arithmetic operator: `+`, `-`, `*`, or `/`.
-3. Enter the second number.
-4. Press `=` to display the result.
-5. Press `C` to clear the calculator.
-6. Press `EXIT` to close the application.
+1. Launch the application.
+2. Enter the student's name, age, roll number, and branch.
+3. Select Male or Female.
+4. Tick **Accept Terms and Conditions**.
+5. Click **Submit** to validate the fields and display the registration details.
+6. Click **Reset** to clear the form.
+
+## Validation
+
+- Name, age, roll number, and branch must not be empty.
+- Age must be a number between 0 and 100.
+- A gender option must be selected.
+- The Terms and Conditions checkbox must be selected.
 
 ## Current Limitations
 
-- The calculator is designed for basic arithmetic operations.
-- Chained calculations are limited.
-- The interface uses a fixed window size.
-- Student or calculation history is not stored.
+- Student details are displayed in a dialog and are not stored permanently.
+- The Terms and Conditions checkbox does not display the terms themselves.
+- The form uses fixed positioning, so its layout is not responsive.
+- Only Male and Female are available as gender options.
 
 ## Future Improvements
 
-- Improve error recovery and input validation.
-- Add percentage and square-root operations.
-- Improve the interface design.
-- Support keyboard input.
-- Add calculation history.
-
-<!-- ## Command To Run in VS Code
-
-```bash
-javac Main.java Model.java View.java Controller.java
-```
-
-```bash
-java Main
-``` -->
-
-
+- Save student records to a file or database.
+- Improve the interface using a layout manager.
+- Add more robust validation for names and roll numbers.
+- Display the Terms and Conditions before acceptance.
 
 ## License
 
-This project is intended for educational and academic purposes.
+This project is provided for educational and academic use. Add a specific open-source license if you intend to publish it for reuse by others.
