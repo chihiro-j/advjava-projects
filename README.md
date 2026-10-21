@@ -9,7 +9,7 @@ This repository contains Advanced Java laboratory experiments and a web applicat
 | 1 | `Exp1-StudentRegistration` | Student Registration Form |
 | 2 | `Exp2-Calculator-using-Java-Swing` | Calculator using Java Swing |
 | 3 | `Exp3-JDBC` | Database connectivity and JDBC operations |
-| 4 | `Exp4-NetworkProgramming-TCP` | TCP client-server communication |
+| 4 | `Exp4-client server` | TCP client-server communication |
 | 5 | `Exp5-RMI` | Remote Method Invocation |
 | 6 | `Exp6-Servlet` | Java Servlet-based web application |
 | 7 | `ShopSphereProject` | E-commerce web application project |
