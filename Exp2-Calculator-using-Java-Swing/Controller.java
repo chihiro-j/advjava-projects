@@ -1,30 +1,104 @@
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class CalculatorController implements ActionListener {
-    CalculatorView view;
-    CalculatorModel model;
+public class Controller implements ActionListener {
 
-    public CalculatorController(CalculatorView view, CalculatorModel model) {
-        this.view = view;
+    private Model model;
+    private View view;
+
+    private double firstNumber;
+    private String operator;
+    private boolean newNumber;
+
+    public Controller(Model model, View view) {
+
         this.model = model;
+        this.view = view;
 
-        view.btnAdd.addActionListener(this);
-        view.btnSub.addActionListener(this);
-        view.btnMul.addActionListener(this);
-        view.btnDiv.addActionListener(this);
+        firstNumber = 0;
+        operator = "";
+        newNumber = true;
+
+        view.addButtonListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        double num1 = Double.parseDouble(view.txtNum1.getText());
-        double num2 = Double.parseDouble(view.txtNum2.getText());
-        double result = 0;
 
-        if(e.getSource() == view.btnAdd) result = model.add(num1, num2);
-        else if(e.getSource() == view.btnSub) result = model.subtract(num1, num2);
-        else if(e.getSource() == view.btnMul) result = model.multiply(num1, num2);
-        else if(e.getSource() == view.btnDiv) result = model.divide(num1, num2);
+        String command = e.getActionCommand();
 
-        view.txtResult.setText(String.valueOf(result));
+        if (command.matches("[0-9]")) {
+
+            if (newNumber || view.getDisplay().equals("0")) {
+                view.setDisplay(command);
+                newNumber = false;
+            } else {
+                view.setDisplay(view.getDisplay() + command);
+            }
+
+        } else if (command.equals(".")) {
+
+            if (newNumber) {
+                view.setDisplay("0.");
+                newNumber = false;
+            } else if (!view.getDisplay().contains(".")) {
+                view.setDisplay(view.getDisplay() + ".");
+            }
+
+        } else if (command.equals("C")) {
+
+            firstNumber = 0;
+            operator = "";
+            newNumber = true;
+            view.setDisplay("0");
+
+        } else if (command.equals("+") ||
+                   command.equals("-") ||
+                   command.equals("*") ||
+                   command.equals("/")) {
+
+            firstNumber = Double.parseDouble(view.getDisplay());
+            operator = command;
+            newNumber = true;
+
+        } else if (command.equals("=")) {
+
+            if (operator.equals("")) {
+                return;
+            }
+
+            try {
+
+                double secondNumber =
+                    Double.parseDouble(view.getDisplay());
+
+                double result =
+                    model.calculate(firstNumber, secondNumber, operator);
+
+                view.setDisplay(formatResult(result));
+
+                firstNumber = result;
+                operator = "";
+                newNumber = true;
+
+            } catch (ArithmeticException ex) {
+
+                view.setDisplay("Cannot divide by 0");
+                newNumber = true;
+            }
+
+        } else if (command.equals("EXIT")) {
+
+            System.exit(0);
+        }
+    }
+
+    private String formatResult(double result) {
+
+        if (result == (long) result) {
+            return String.valueOf((long) result);
+        }
+
+        return String.valueOf(result);
     }
 }
